@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Luoo," />
+  <meta name="keywords" content="python," />
 
 
 
@@ -84,16 +84,22 @@
 
 
 
-<meta name="description" content="power to go">
+<meta name="description" content="Python 3 有两种表示字符序列的类型：bytes和str。前者的实例包含原始的8位值；后者的实例包含Unicode字符。
+Python 2也有两种表示字符类型，str和unicode。与python 3 不同的是，str的实例包含原始的8位值^8位值；而unicode的实例，则包含Unicode字符。
+把Unicdde字符表示为二进制数据（也就是原始的8位值）有许多的方法。最常见的为UTF-">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello Luoo">
-<meta property="og:url" content="http://yoursite.com/2016/05/21/Hello-Luoo/index.html">
+<meta property="og:title" content="了解bytes、str与unicode的区别">
+<meta property="og:url" content="http://yoursite.com/2016/05/22/Effective Python/index.html">
 <meta property="og:site_name" content="Luoo">
-<meta property="og:description" content="power to go">
-<meta property="og:updated_time" content="2016-05-21T12:30:00.444Z">
+<meta property="og:description" content="Python 3 有两种表示字符序列的类型：bytes和str。前者的实例包含原始的8位值；后者的实例包含Unicode字符。
+Python 2也有两种表示字符类型，str和unicode。与python 3 不同的是，str的实例包含原始的8位值^8位值；而unicode的实例，则包含Unicode字符。
+把Unicdde字符表示为二进制数据（也就是原始的8位值）有许多的方法。最常见的为UTF-">
+<meta property="og:updated_time" content="2016-05-22T15:04:26.434Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello Luoo">
-<meta name="twitter:description" content="power to go">
+<meta name="twitter:title" content="了解bytes、str与unicode的区别">
+<meta name="twitter:description" content="Python 3 有两种表示字符序列的类型：bytes和str。前者的实例包含原始的8位值；后者的实例包含Unicode字符。
+Python 2也有两种表示字符类型，str和unicode。与python 3 不同的是，str的实例包含原始的8位值^8位值；而unicode的实例，则包含Unicode字符。
+把Unicdde字符表示为二进制数据（也就是原始的8位值）有许多的方法。最常见的为UTF-">
 
 
 
@@ -111,7 +117,7 @@
   };
 </script>
 
-  <title> Hello Luoo | Luoo </title>
+  <title> 了解bytes、str与unicode的区别 | Luoo </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -241,7 +247,7 @@
             
             
               
-                Hello Luoo
+                了解bytes、str与unicode的区别
               
             
           </h1>
@@ -253,8 +259,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2016-05-21T20:25:09+08:00" content="2016-05-21">
-              2016-05-21
+            <time itemprop="dateCreated" datetime="2016-05-22T22:56:26+08:00" content="2016-05-22">
+              2016-05-22
             </time>
           </span>
 
@@ -267,8 +273,8 @@
               <span class="post-meta-item-text">In</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/札记/" itemprop="url" rel="index">
-                    <span itemprop="name">札记</span>
+                  <a href="/categories/Effective-Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Effective Python</span>
                   </a>
                 </span>
 
@@ -300,8 +306,42 @@
       
 
       
-        <blockquote>
-<p>power to go</p>
+        <p>Python 3 有两种表示字符序列的类型：bytes和str。前者的实例包含原始的8位值；后者的实例包含Unicode字符。</p>
+<p>Python 2也有两种表示字符类型，str和unicode。与python 3 不同的是，str的实例包含原始的8位值<a href="就是原始的字节，由于每个字节有8个二进制位，所以是原始的8位值。">^8位值</a>；而unicode的实例，则包含Unicode字符。</p>
+<p>把Unicdde字符表示为二进制数据（也就是原始的8位值）有许多的方法。最常见的为UTF-8。但是，python 3的str实例和python 2的unicode实例都没有和特定的二进制编码形式相关联。将Unicode字符转换为二进制数据，使用encode。反过来，使用decode方法。<br><a id="more"></a></p>
+<p>编写python，一定要把编码和解码操作放在界面的最外围来做，程序的核心部分应使用Unicode字符类型（python 3中str，python 2中unicode），而且不要对字符编码做任何假设。此方法有两个好处：</p>
+<blockquote>
+<ul>
+<li><p>令程序接受多种类型的文本编码</p>
+</li>
+<li><p>保证输出的文本信息只采用一种编码形式（最好是UTF-8)</p>
+</li>
+</ul>
+</blockquote>
+<p>由于字符有别，所以python代码中经常两种的使用情景：</p>
+<ul>
+<li>[ ] 开发者需要原始8位值，这些8位值表示以UTF-8格式（other）来编码的字符。</li>
+<li>[ ] 开发者需要操作没有特定编写形式的Unicode字符。</li>
+</ul>
+<p>所以，需要编写两个helper函数，在两种情况里转换，使得转换后的输入数据可符合预期。</p>
+<p>在python 3中，需要编写接受str或bytes，并总是返回str的方法:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">to_str</span><span class="params">(bytes_or_str)</span>:</span></span><br><span class="line">    <span class="keyword">if</span>  isinstance(bytes_or_str,bytes):</span><br><span class="line">        value = bytes_or_str.decode(<span class="string">'utf-8'</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        value = bytes_or_str</span><br><span class="line">    reyurn value <span class="comment">#instance of str</span></span><br></pre></td></tr></table></figure>
+<p>另外，还需要编写接受str或bytes，并总是返回bytes的办法：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">to_bytes</span><span class="params">(bytes_or_str)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> isinstance(bytes_or_str,str):</span><br><span class="line">        value = bytes_or_str.encode(<span class="string">'utf-8'</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        value = bytes_or_str</span><br><span class="line">    <span class="keyword">return</span> calue <span class="comment">#instance of bytes</span></span><br></pre></td></tr></table></figure></p>
+<p>在python 2中，需要编写接受str或unicode，并总是返回unicode的方法：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># python 2</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">to_unicode</span><span class="params">(unicode_or_str)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> isinstance(unicode_or_str,str):</span><br><span class="line">        value = unicode_or_str.decode(<span class="string">'utf-8'</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        value = unicode_or_str</span><br><span class="line">    <span class="keyword">return</span> value <span class="comment"># instance of unicode</span></span><br></pre></td></tr></table></figure></p>
+<p>另外，需要接受str或unicode，并总是发返回str的方法：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># python </span><br><span class="line">def to_str(unicode_or_str)</span><br><span class="line">    if isinstance(unicode_or-str,unicode):</span><br><span class="line">        value = unicode_or_str.edcode('utf-8')</span><br><span class="line">    else:</span><br><span class="line">        value = unicode_or_str</span><br><span class="line">    reyurn value #instance of bytes</span><br></pre></td></tr></table></figure></p>
+<p>在python中使用8位值与Unicode字符时，要注意：</p>
+<p>第一个问题可能会出现在python 2里面，如果str只包含7位ASCII字符，那么unicode和str实例似乎就成了同一种类型。</p>
+<ul>
+<li>[ ] 可以用+操作符这种str和unicode链接起来。</li>
+<li>[ ] 可以用等价与不等价操作符，在这种str实例与unicode实例之间进行比较。</li>
+<li>[ ] 在格式字符串中，可以用’%s’等形式来代表unicode实例。</li>
+</ul>
+<p>这些行为意味着，在只处理7位ASCII的情境下，如果某函数接受str，那么可以给它传入unicode；如果某函数接受unicode，那么也可以给它传入str。而在python 3中，bytes与str实例则结对不会等价，即使空字符串也不行。所以，在传入字符串列的时候必须留意其类型。</p>
+<p>第二个问题可能会出现在python 3中，如果通过内置的open函数获取了文件句柄 (file handle) ,那么注意，该句柄默认采用UTF-8编码格式来操作文件。而在python 2中，文件操作的默认编码格式则是二进制形式。这可能会导致程序出现奇怪的错误。</p>
+<p>例如，现在向文件中随意写入一些二进制数据。下面这种用法在python 2中可以正常运作，not pytnon 3.<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> open (<span class="string">'/tem/random.bin'</span>,<span class="string">'w'</span>) <span class="keyword">as</span> f</span><br><span class="line">    f.write(os.urandom(<span class="number">10</span>))</span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">TypeError: must be str ,<span class="keyword">not</span> bytes</span><br></pre></td></tr></table></figure></p>
+<p>原因在于：python 3给open函数添加了名为enocdeing的新参数，新参数默认值为’utf-8’.这样在文件句柄上进行read和write操作，系统要求开发者必须传入包含Unicoe字符的str实例，而不接受包含二进制数据的bytes实例。</p>
+<blockquote>
+<p>用二进制写入模式（’wb’)来开启代操作的文件。同时适配与python 2和python 3 。</p>
 </blockquote>
 
       
@@ -324,7 +364,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Luoo/" rel="tag">#Luoo</a>
+            <a href="/tags/python/" rel="tag">#python</a>
           
         </div>
       
@@ -333,17 +373,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/05/21/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2016/05/21/Hello-Luoo/" rel="next" title="Hello Luoo">
+                <i class="fa fa-chevron-left"></i> Hello Luoo
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/05/22/Effective Python/" rel="prev" title="了解bytes、str与unicode的区别">
-                了解bytes、str与unicode的区别 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
