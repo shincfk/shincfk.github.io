@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Luoo" />
+  <meta name="keywords" content="python," />
 
 
 
@@ -84,15 +84,16 @@
 
 
 
-<meta name="description" content="Power To Go">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Luoo">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="Python的语法非常精炼，很容易就能用一行表达式来实现逻辑。例如，要从URL中解码查询字符串。在下例所举的查询字符串中，每个参数都可以表达一个整数值：123456from urllib.parse import parse_qsmy_values= parse_qs(&apos;red=5&amp;amp;blue=0&amp;amp;green=&apos;,keep_blank_values=true)print(repr(m">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用辅助函数来取代复杂的表达式">
+<meta property="og:url" content="http://yoursite.com/2016/05/26/用辅助函数来取代复杂的表达式/index.html">
 <meta property="og:site_name" content="Luoo">
-<meta property="og:description" content="Power To Go">
+<meta property="og:description" content="Python的语法非常精炼，很容易就能用一行表达式来实现逻辑。例如，要从URL中解码查询字符串。在下例所举的查询字符串中，每个参数都可以表达一个整数值：123456from urllib.parse import parse_qsmy_values= parse_qs(&apos;red=5&amp;amp;blue=0&amp;amp;green=&apos;,keep_blank_values=true)print(repr(m">
+<meta property="og:updated_time" content="2016-05-26T15:41:22.818Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Luoo">
-<meta name="twitter:description" content="Power To Go">
+<meta name="twitter:title" content="用辅助函数来取代复杂的表达式">
+<meta name="twitter:description" content="Python的语法非常精炼，很容易就能用一行表达式来实现逻辑。例如，要从URL中解码查询字符串。在下例所举的查询字符串中，每个参数都可以表达一个整数值：123456from urllib.parse import parse_qsmy_values= parse_qs(&apos;red=5&amp;amp;blue=0&amp;amp;green=&apos;,keep_blank_values=true)print(repr(m">
 
 
 
@@ -110,7 +111,7 @@
   };
 </script>
 
-  <title> Luoo </title>
+  <title> 用辅助函数来取代复杂的表达式 | Luoo </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -131,9 +132,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -220,9 +219,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
   
@@ -242,10 +241,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2016/05/26/用辅助函数来取代复杂的表达式/" itemprop="url">
-                  用辅助函数来取代复杂的表达式
-                </a>
+                用辅助函数来取代复杂的表达式
               
             
           </h1>
@@ -304,9 +300,7 @@
       
 
       
-        
-          
-            <p>Python的语法非常精炼，很容易就能用一行表达式来实现逻辑。例如，要从URL中解码查询字符串。在下例所举的查询字符串中，每个参数都可以表达一个整数值：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib.parse <span class="keyword">import</span> parse_qs</span><br><span class="line">my_values= parse_qs(<span class="string">'red=5&amp;blue=0&amp;green='</span>,keep_blank_values=true)</span><br><span class="line">print(repr(my_values))</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">&#123;<span class="string">'red'</span>:[<span class="string">'5'</span>],<span class="string">'green'</span>:[<span class="string">''</span>],<span class="string">'blue'</span>:[<span class="string">'0'</span>]&#125;</span><br></pre></td></tr></table></figure></p>
+        <p>Python的语法非常精炼，很容易就能用一行表达式来实现逻辑。例如，要从URL中解码查询字符串。在下例所举的查询字符串中，每个参数都可以表达一个整数值：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib.parse <span class="keyword">import</span> parse_qs</span><br><span class="line">my_values= parse_qs(<span class="string">'red=5&amp;blue=0&amp;green='</span>,keep_blank_values=true)</span><br><span class="line">print(repr(my_values))</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">&#123;<span class="string">'red'</span>:[<span class="string">'5'</span>],<span class="string">'green'</span>:[<span class="string">''</span>],<span class="string">'blue'</span>:[<span class="string">'0'</span>]&#125;</span><br></pre></td></tr></table></figure></p>
 <p>查询字符串中的某些参数可能有很多值，某些参数可能只有一个值，某些参数可能是blank值，还有些参数则没有出现在查询字符串之中。用get方法在my_values字典中查询不同的参数时，就有可能获得不同的返回值。<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">print('Red:     ',my_values.get('red'))</span><br><span class="line">print('Green:   ',my_values.get('green'))</span><br><span class="line">print('Opacity: ',my_values.get('opacity))</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">Red:     ['5']</span><br><span class="line">Green:   ['']</span><br><span class="line">Opacity: None</span><br></pre></td></tr></table></figure></p>
 <p>如果待查询的参数没有出现在字符串中，或当该参数的值为空白时能够返回默认值0，那就更好了。这个逻辑看上去似乎并不值得用完整的if语句或辅助函数来实现，于是，你可能会考虑用Boolean表达式。</p>
 <p>由于Python的语法非常精炼，所以我们很容易就想到了这种做法。空字符串、空列表及零值，都会评估为False。因此，在下面的例子中，如果or操作符左侧的字表达式估值为False,那么整个表达式的值就将是or操作码右侧那个子表达式的值。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># for query strinng 'red=5&amp;blue=0'&amp;green='</span></span><br><span class="line">red = my_values.get(<span class="string">'red'</span>,[<span class="string">''</span>])[<span class="number">0</span>] <span class="keyword">or</span> <span class="number">0</span></span><br><span class="line">green = my_values.get(<span class="string">'green'</span>,[<span class="string">''</span>])[<span class="number">0</span>] <span class="keyword">or</span> <span class="number">0</span></span><br><span class="line">opacity = my_values.get(<span class="string">'opacity'</span>,[<span class="string">''</span>])[<span class="number">0</span>] <span class="keyword">or</span> <span class="number">0</span></span><br><span class="line">print(<span class="string">'Red:     %r'</span> % red)</span><br><span class="line">print(<span class="string">'Green:   %r'</span> % green)</span><br><span class="line">print(<span class="string">'Opacity: %r'</span> % opacity)</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">Red:     <span class="string">'5'</span></span><br><span class="line">Green:   <span class="number">0</span></span><br><span class="line">Opacity: <span class="number">0</span></span><br></pre></td></tr></table></figure></p>
@@ -317,607 +311,58 @@
 <p>调用这个辅助函数所使用的代码，更加清晰。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">green = get_first_int(my_values,&apos;green&apos;)</span><br></pre></td></tr></table></figure></p>
 <p>表达式如果变得比较复杂，应该考虑将其拆解为小块，并把这些逻辑移入辅助函数中。</p>
 
-          
+      
+    </div>
+
+    <div>
+      
         
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
     <footer class="post-footer">
       
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/23/Effective Study/" itemprop="url">
-                  非线性光学复习 Season 2
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2016-05-23T23:42:11+08:00" content="2016-05-23">
-              2016-05-23
-            </time>
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Effective-Study/" itemprop="url" rel="index">
-                    <span itemprop="name">Effective Study</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
+            <a href="/tags/python/" rel="tag">#python</a>
           
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          <p>1.试简述非线性光学效应产生的基本条件以及非线性光学的主要区别。<br>基本条件 : 强光与物质相互作用<br><strong>线性光学：</strong></p>
-<blockquote>
-<ul>
-<li>以普通光作为光源；</li>
-<li>多束光在介质中传播，可以改变光能量的空间分布和传播方向，但不改变光的频率；</li>
-<li>光作用于介质，不改变介质的物理量，介质物理量与光场强度无关；</li>
-<li>光束通过光学系统，入射光强与投射光强之间一般呈线性关系；</li>
-<li>多光束在介质中交叉传播，各光束的相位信息彼此不能相互传递。</li>
-</ul>
-</blockquote>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/05/23/Effective Study/#more" rel="contents">
-              Read more &raquo;
-            </a>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/05/23/Effective Study/" rel="next" title="非线性光学复习 Season 2">
+                <i class="fa fa-chevron-left"></i> 非线性光学复习 Season 2
+              </a>
+            
           </div>
-        
-      
-    </div>
 
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
+          <div class="post-nav-prev post-nav-item">
             
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/22/Effective Python/" itemprop="url">
-                  了解bytes、str与unicode的区别
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2016-05-22T22:56:26+08:00" content="2016-05-22">
-              2016-05-22
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Effective-Python/" itemprop="url" rel="index">
-                    <span itemprop="name">Effective Python</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>Python 3 有两种表示字符序列的类型：bytes和str。前者的实例包含原始的8位值；后者的实例包含Unicode字符。</p>
-<p>Python 2也有两种表示字符类型，str和unicode。与python 3 不同的是，str的实例包含原始的8位值<a href="就是原始的字节，由于每个字节有8个二进制位，所以是原始的8位值。">^8位值</a>；而unicode的实例，则包含Unicode字符。</p>
-<p>把Unicdde字符表示为二进制数据（也就是原始的8位值）有许多的方法。最常见的为UTF-8。但是，python 3的str实例和python 2的unicode实例都没有和特定的二进制编码形式相关联。将Unicode字符转换为二进制数据，使用encode。反过来，使用decode方法。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/05/22/Effective Python/#more" rel="contents">
-              Read more &raquo;
-            </a>
           </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/21/Hello-Luoo/" itemprop="url">
-                  Hello Luoo
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2016-05-21T20:25:09+08:00" content="2016-05-21">
-              2016-05-21
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/札记/" itemprop="url" rel="index">
-                    <span itemprop="name">札记</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <blockquote>
-<p>power to go</p>
-</blockquote>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-      
 
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/21/hello-world/" itemprop="url">
-                  Hello World
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2016-05-21T19:26:45+08:00" content="2016-05-21">
-              2016-05-21
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/05/21/hello-world/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-        
+    <div class="post-spread">
       
     </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/21/Listen Up/" itemprop="url">
-                  Listen Up
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2016-05-21T00:00:00+08:00" content="2016-05-21">
-              2016-05-21
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/译者说/" itemprop="url" rel="index">
-                    <span itemprop="name">译者说</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>  <img src="http://7xru0w.com1.z0.glb.clouddn.com/Ceswz4uXEAAy2Cv.jpg" alt="1"></p>
-<p>  “VIBRANT” is a word often used in guide books to describe a particular quarter of a city: Soho, in London, for example. But what does that actually mean? To Daniele Quercia of Bell Labs in Cambridge, England, and his colleagues, the term has a literal truth to it. Soho is a place of good vibrations through the air—good sounds, in other words. It shares this with the Gothic quarter of Barcelona, for example, but not with much of Mayfair and Belgravia, upmarket London districts near Soho that Dr Quercia brands sonically “chaotic”.
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/05/21/Listen Up/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-  </section>
-
-  
+  </div>
 
 
           </div>
@@ -925,6 +370,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -944,8 +393,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://7xru0w.com1.z0.glb.clouddn.com/005FPCwqgw1ejk1m24i0dj30640640sv.jpg"
@@ -1009,6 +467,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">This post does not have a Table of Contents</p>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -1105,6 +574,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
