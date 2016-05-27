@@ -305,26 +305,13 @@
 
       
         
-          
-            <p>Python提供了一种把序列切成小块的写法。这种slice操作，使得开发者能够轻易地访问由序列中某些元素所构成的子集。最简单的做法，就是对内置的list、str和bytes进行切割。切割操作还可以延伸到实现了_getitem_和_setitem_这两个特殊方法的Python类上。</p>
-<p>切割操作的基本写法是somelist[start:end],其中start【起始索引】所指的元素涵盖在切割后的范围内，而end【结束索引】所指的元素则不包括在切割结果之中。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">3</span>]:  a=[<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>,<span class="string">'d'</span>,<span class="string">'e'</span>,<span class="string">'f'</span>,<span class="string">'g'</span>,<span class="string">'h'</span>]</span><br><span class="line">   ...: print(<span class="string">'first four:'</span>,a[:<span class="number">4</span>])</span><br><span class="line">   ...: print(<span class="string">'last four:'</span>,a[<span class="number">-4</span>:])</span><br><span class="line">   ...: print(<span class="string">'middle two:'</span>,a[<span class="number">3</span>:<span class="number">-3</span>])</span><br><span class="line">   ...: </span><br><span class="line">(<span class="string">'first four:'</span>, [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>])</span><br><span class="line">(<span class="string">'last four:'</span>, [<span class="string">'e'</span>, <span class="string">'f'</span>, <span class="string">'g'</span>, <span class="string">'h'</span>])</span><br><span class="line">(<span class="string">'middle two:'</span>, [<span class="string">'d'</span>, <span class="string">'e'</span>])</span><br></pre></td></tr></table></figure></p>
-<p>如果从列表开头获得切片，那就不要再start那里写上0，而是应该把它留空，就为了清爽。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">assert a[:5] == a[0:5]</span><br></pre></td></tr></table></figure></p>
-<p>如果切片一直取到列表末尾，那就应该把end留空。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">assert a[5：] == a[5:len (a)]</span><br></pre></td></tr></table></figure></p>
-<p>在指定切片起止索引时，若要从列表尾部向前算，可使用负值表示相关偏移量。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">In [4]: a[:]</span><br><span class="line">Out[4]: [&apos;a&apos;, &apos;b&apos;, &apos;c&apos;, &apos;d&apos;, &apos;e&apos;, &apos;f&apos;, &apos;g&apos;, &apos;h&apos;]</span><br><span class="line"></span><br><span class="line">In [5]: a[:5]</span><br><span class="line">Out[5]: [&apos;a&apos;, &apos;b&apos;, &apos;c&apos;, &apos;d&apos;, &apos;e&apos;]</span><br><span class="line"></span><br><span class="line">In [6]: a[:-1]</span><br><span class="line">Out[6]: [&apos;a&apos;, &apos;b&apos;, &apos;c&apos;, &apos;d&apos;, &apos;e&apos;, &apos;f&apos;, &apos;g&apos;]</span><br><span class="line"></span><br><span class="line">In [7]: a[-3:]</span><br><span class="line">Out[7]: [&apos;f&apos;, &apos;g&apos;, &apos;h&apos;]</span><br><span class="line"></span><br><span class="line">In [8]: a[2:5]</span><br><span class="line">Out[8]: [&apos;c&apos;, &apos;d&apos;, &apos;e&apos;]</span><br><span class="line"></span><br><span class="line">In [9]: a[2:-1]</span><br><span class="line">Out[9]: [&apos;c&apos;, &apos;d&apos;, &apos;e&apos;, &apos;f&apos;, &apos;g&apos;]</span><br><span class="line"></span><br><span class="line">In [10]: a[-3:-1]</span><br><span class="line">Out[10]: [&apos;f&apos;, &apos;g&apos;]</span><br></pre></td></tr></table></figure></p>
-<p>切割列表时，即使start或end索引越界也不会出问题。利用这一特性，我们可以限定输入序列的最大长度。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">first_twenty_items =  a[:20]</span><br><span class="line">last_twenty_items = a[-20:]</span><br></pre></td></tr></table></figure></p>
-<p>反之，访问列表中的单个元素，下标不要越界，否则会导致异常。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">In [11]: a[20]</span><br><span class="line">---------------------------------------------------------------------------</span><br><span class="line">IndexError                                Traceback (most recent call last)</span><br><span class="line">&lt;ipython-input-11-f8db3c71230c&gt; in &lt;module&gt;()</span><br><span class="line">----&gt; 1 a[20]</span><br><span class="line"></span><br><span class="line">IndexError: list index out of range</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>注意，如果使用负变量作为start索引来切割列表，那么在极个别情况下，可能会导致奇怪的结果。例如：somelist[-n:]这个表达式，在n大于1时可以正常运作，如当n为3时，somelist[-3：]的结果是正常的。然而，当n为0时，表达式somelist[-0:]则成了原列表的一份拷贝。</p>
-</blockquote>
-<p>对原列表进行切割之后，会产生另外一份全新的列表。系统依然维护着指向原列表中各个对象的引用。在切割后得到的新列表上进行修改，不会影响原列表。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">In [13]: b=a[4:]</span><br><span class="line">    ...: print(&apos;before:&apos;,b)</span><br><span class="line">    ...: b[1]=99</span><br><span class="line">    ...: print(&apos;after:&apos;,b)</span><br><span class="line">    ...: print(&apos;no change:&apos;,a)</span><br><span class="line">    ...: </span><br><span class="line">(&apos;before:&apos;, [&apos;e&apos;, &apos;f&apos;, &apos;g&apos;, &apos;h&apos;])</span><br><span class="line">(&apos;after:&apos;, [&apos;e&apos;, 99, &apos;g&apos;, &apos;h&apos;])</span><br><span class="line">(&apos;no change:&apos;, [&apos;a&apos;, &apos;b&apos;, &apos;c&apos;, &apos;d&apos;, &apos;e&apos;, &apos;f&apos;, &apos;g&apos;, &apos;h&apos;])</span><br></pre></td></tr></table></figure></p>
-<p>在赋值时对应左侧列表使用切割操作，会把该列表中处在指定范围内的对象替换为新值。与元组（tuple）的赋值（如a,b=c[:2])不同，此切片的长度无需新值的个数相等。位于切片范围之前及之后的那些值都保留不变。列表会根据新值的个数相应地扩张或收缩。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">In [14]: print(&apos;before:&apos;,a)</span><br><span class="line">(&apos;before:&apos;, [&apos;a&apos;, &apos;b&apos;, &apos;c&apos;, &apos;d&apos;, &apos;e&apos;, &apos;f&apos;, &apos;g&apos;, &apos;h&apos;])</span><br><span class="line"></span><br><span class="line">In [15]: a[2:7]=[99,22,14]</span><br><span class="line">    ...: print(&apos;after:&apos;,a)</span><br><span class="line">    ...: </span><br><span class="line">(&apos;after:&apos;, [&apos;a&apos;, &apos;b&apos;, 99, 22, 14, &apos;h&apos;])</span><br></pre></td></tr></table></figure></p>
-<p>如果对赋值操作右侧的列表使用切片，而把切片的起止索引都留空，那就会产生一份原列表的拷贝。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">b=a[:]</span><br><span class="line">assert b == a and b is not a</span><br></pre></td></tr></table></figure></p>
-<p>如果对赋值操作左侧的列表使用切片，而又没有指定起止索引，那么系统就会把右侧的新值复制一份，并用这份拷贝来替换左侧列表的全部内容，而不会重新分配新的列表。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">In [17]: b=a</span><br><span class="line">    ...: print(&apos;before:&apos;,a)</span><br><span class="line">    ...: a[:]=[101,102,103]</span><br><span class="line">    ...: assert a is b</span><br><span class="line">    ...: print(&apos;after:&apos;,a)</span><br><span class="line">    ...: </span><br><span class="line">(&apos;before:&apos;, [&apos;a&apos;, &apos;b&apos;, 99, 22, 14, &apos;h&apos;])</span><br><span class="line">(&apos;after:&apos;, [101, 102, 103])</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>ipython</p>
-</blockquote>
-
-          
+          <p>Python提供了一种把序列切成小块的写法。这种slice操作，使得开发者能够轻易地访问由序列中某些元素所构成的子集。最简单的做法，就是对内置的list、str和bytes进行切割。切割操作还可以延伸到实现了_getitem_和_setitem_这两个特殊方法的Python类上。</p>
+<p>切割操作的基本写法是somelist[start:end],其中start【起始索引】所指的元素涵盖在切割后的范围内，而end【结束索引】所指的元素则不包括在切割结果之中。
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/05/28/了解切割序列的方法/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -1255,17 +1242,15 @@
 
       
         
-          
-            <p><img src="http://7xru0w.com1.z0.glb.clouddn.com/dream.jpg" alt="dream"></p>
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="http://music.163.com/outchain/player?type=2&id=27908171&auto=1&height=66"></iframe>
+          <p><img src="http://7xru0w.com1.z0.glb.clouddn.com/dream.jpg" alt="dream"></p>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="http://music.163.com/outchain/player?type=2&id=27908171&auto=1&height=66"></iframe>
 
-<p>总想指指我的灵魂给你看<br>指指狭窄又细腻的缝隙给你看<br>它们已经耍不出任何花招<br>茫茫然像是很高兴<br>颓唐着又那样不得己<br>它们填补了又填补<br>等待了又等待<br>它们疯狂、勇敢又毫无头脑的作用于我</p>
-<p>然而你没有来<br>始终没有来<br>大雁也没有来<br>那些精准的杀戮没有来<br>谦逊的清晨没有来<br>可是我在这里<br>将来也会在这里<br>我没有逃避<br>我还站在最不幸的地方<br>等你如试探般降临<br>暖一暖这生之凉薄<br>哪怕我们遇见的总是那火焰上的自己</p>
-<blockquote>
-<p>我们终将无所畏惧</p>
-</blockquote>
-
-          
+<p>总想指指我的灵魂给你看<br>指指狭窄又细腻的缝隙给你看
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/05/21/Hello-Luoo/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
         
       
     </div>
