@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="book," />
+  <meta name="keywords" content="python," />
 
 
 
@@ -84,16 +84,16 @@
 
 
 
-<meta name="description" content="ADVANCED CALCULUS   ADVANCED CALCULUS">
+<meta name="description" content="Python提供了一种精炼的写法，可以根据一份列表来制作另外一份。这种表达式称为list comprehension。例如，要用列表中每个元素的平方值构建另一份列表。如果采用list comprehension来实现，那就同时指定制作新列表时所要迭代的输入序列，以及计算新列表中每个元素的值时所用的表达式。12345In [27]: a=[1,2,3,4,5,6,7,8,9,10]    ...:">
 <meta property="og:type" content="article">
-<meta property="og:title" content="One Book One Week">
-<meta property="og:url" content="http://yoursite.com/2016/05/27/ADVANCED CALCULUS/index.html">
+<meta property="og:title" content="用列表推导来取代map和filter">
+<meta property="og:url" content="http://yoursite.com/2016/05/29/用列表推导来取代map和filter/index.html">
 <meta property="og:site_name" content="Luoo">
-<meta property="og:description" content="ADVANCED CALCULUS   ADVANCED CALCULUS">
-<meta property="og:updated_time" content="2016-05-27T16:11:17.397Z">
+<meta property="og:description" content="Python提供了一种精炼的写法，可以根据一份列表来制作另外一份。这种表达式称为list comprehension。例如，要用列表中每个元素的平方值构建另一份列表。如果采用list comprehension来实现，那就同时指定制作新列表时所要迭代的输入序列，以及计算新列表中每个元素的值时所用的表达式。12345In [27]: a=[1,2,3,4,5,6,7,8,9,10]    ...:">
+<meta property="og:updated_time" content="2016-05-29T14:26:11.328Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="One Book One Week">
-<meta name="twitter:description" content="ADVANCED CALCULUS   ADVANCED CALCULUS">
+<meta name="twitter:title" content="用列表推导来取代map和filter">
+<meta name="twitter:description" content="Python提供了一种精炼的写法，可以根据一份列表来制作另外一份。这种表达式称为list comprehension。例如，要用列表中每个元素的平方值构建另一份列表。如果采用list comprehension来实现，那就同时指定制作新列表时所要迭代的输入序列，以及计算新列表中每个元素的值时所用的表达式。12345In [27]: a=[1,2,3,4,5,6,7,8,9,10]    ...:">
 
 
 
@@ -111,7 +111,7 @@
   };
 </script>
 
-  <title> One Book One Week | Luoo </title>
+  <title> 用列表推导来取代map和filter | Luoo </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -241,7 +241,7 @@
             
             
               
-                One Book One Week
+                用列表推导来取代map和filter
               
             
           </h1>
@@ -253,8 +253,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2016-05-27T01:07:10+08:00" content="2016-05-27">
-              2016-05-27
+            <time itemprop="dateCreated" datetime="2016-05-29T22:25:15+08:00" content="2016-05-29">
+              2016-05-29
             </time>
           </span>
 
@@ -267,8 +267,8 @@
               <span class="post-meta-item-text">In</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Effective-Study/" itemprop="url" rel="index">
-                    <span itemprop="name">Effective Study</span>
+                  <a href="/categories/Effective-Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Effective Python</span>
                   </a>
                 </span>
 
@@ -300,7 +300,12 @@
       
 
       
-        <p><i class="fa fa-book" aria-hidden="true"></i>   ADVANCED CALCULUS<br><i class="fa fa-file" aria-hidden="true"></i>   <a href="http://pan.baidu.com/s/1hrQo9Ti" target="_blank" rel="external">ADVANCED CALCULUS</a></p>
+        <p>Python提供了一种精炼的写法，可以根据一份列表来制作另外一份。这种表达式称为<em>list comprehension</em>。例如，要用列表中每个元素的平方值构建另一份列表。如果采用<em>list comprehension</em>来实现，那就同时指定制作新列表时所要迭代的输入序列，以及计算新列表中每个元素的值时所用的表达式。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">In [27]: a=[1,2,3,4,5,6,7,8,9,10]</span><br><span class="line">    ...: squares=[x**2 for x in a]</span><br><span class="line">    ...: print(squares)</span><br><span class="line">    ...: </span><br><span class="line">[1, 4, 9, 16, 25, 36, 49, 64, 81, 100]</span><br></pre></td></tr></table></figure></p>
+<p>除非是调用只有一个参数的函数，否则，对于简单的情况来说，列表推导要比内置的map函数更清晰。如果使用map，那就要创建lambda函数，以便计算新列表中各个元素的值，这会使代码不简洁。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">squares=map(lambda x: x**2,a)</span><br></pre></td></tr></table></figure></p>
+<p>列表推导则不像map那么复杂，它可以直接过滤原列表的元素，使得生成的新列表不会包含对应的计算结果。例如，在计算平方值时，我们只想计算那些可以为2所整除的数。如果用列表推导来做，那么只需要在循环后面添加循环表达式就好。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">In [38]: even_squares=[x**2 for x in a if x%2 == 0]</span><br><span class="line">    ...: print(even_squares)</span><br><span class="line">    ...: </span><br><span class="line">[4, 16, 36, 64, 100]</span><br></pre></td></tr></table></figure></p>
+<p>把内置的filter函数结合起来，也能达成同样的效果，自然不简洁明了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">In [42]:  alt=map(lambda x:x**2,filter(lambda x: x%2 == 0,a))</span><br><span class="line">    ...: assert even_squares == list(alt)</span><br><span class="line">    ...: print(even_squares)</span><br><span class="line">    ...: </span><br><span class="line">[4, 16, 36, 64, 100]</span><br></pre></td></tr></table></figure></p>
+<p>dict与set,也支持推导表达式。</p>
+<p>filter函数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">help(filter)</span><br><span class="line">Help on built-in function filter in module __builtin__:</span><br><span class="line"></span><br><span class="line">filter(...)</span><br><span class="line">    filter(function or None, sequence) -&gt; list, tuple, or string</span><br><span class="line">    </span><br><span class="line">    Return those items of sequence for which function(item) is true.  If</span><br><span class="line">    function is None, return the items that are true.  If sequence is a tuple</span><br><span class="line">    or string, return the same type, else return a list.</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -322,7 +327,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/book/" rel="tag">#book</a>
+            <a href="/tags/python/" rel="tag">#python</a>
           
         </div>
       
@@ -331,17 +336,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/05/27/Imperial ambitions 帝国雄心/" rel="next" title="Imperial ambitions 帝国雄心">
-                <i class="fa fa-chevron-left"></i> Imperial ambitions 帝国雄心
+              <a href="/2016/05/29/Sorting/" rel="next" title="Sorting">
+                <i class="fa fa-chevron-left"></i> Sorting
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/05/27/喜欢就好/" rel="prev" title="喜欢就好，何必较真">
-                喜欢就好，何必较真 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>

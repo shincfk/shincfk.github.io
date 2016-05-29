@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="book," />
+  <meta name="keywords" content="python," />
 
 
 
@@ -84,16 +84,37 @@
 
 
 
-<meta name="description" content="ADVANCED CALCULUS   ADVANCED CALCULUS">
+<meta name="description" content="##Insertion sort
+
+核⼼：通过构建有序序列，对于未排序序列，在已排序序列中从后向前扫描(对于单向链表则只能从前往后遍历)，找到相应位置并插⼊。实现上通常使⽤in-place排序(需⽤到O(1)的额外空间)
+
+从第⼀个元素开始，该元素可认为已排序
+取下⼀个元素，对已排序数组从后往前扫描
+若从排序数组中取出的元素⼤于新元素，则移⾄下⼀位置
+重复步骤3，直⾄找到已排序元素⼩于或等于新元素">
 <meta property="og:type" content="article">
-<meta property="og:title" content="One Book One Week">
-<meta property="og:url" content="http://yoursite.com/2016/05/27/ADVANCED CALCULUS/index.html">
+<meta property="og:title" content="Sorting">
+<meta property="og:url" content="http://yoursite.com/2016/05/29/Sorting/index.html">
 <meta property="og:site_name" content="Luoo">
-<meta property="og:description" content="ADVANCED CALCULUS   ADVANCED CALCULUS">
-<meta property="og:updated_time" content="2016-05-27T16:11:17.397Z">
+<meta property="og:description" content="##Insertion sort
+
+核⼼：通过构建有序序列，对于未排序序列，在已排序序列中从后向前扫描(对于单向链表则只能从前往后遍历)，找到相应位置并插⼊。实现上通常使⽤in-place排序(需⽤到O(1)的额外空间)
+
+从第⼀个元素开始，该元素可认为已排序
+取下⼀个元素，对已排序数组从后往前扫描
+若从排序数组中取出的元素⼤于新元素，则移⾄下⼀位置
+重复步骤3，直⾄找到已排序元素⼩于或等于新元素">
+<meta property="og:updated_time" content="2016-05-29T13:45:50.015Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="One Book One Week">
-<meta name="twitter:description" content="ADVANCED CALCULUS   ADVANCED CALCULUS">
+<meta name="twitter:title" content="Sorting">
+<meta name="twitter:description" content="##Insertion sort
+
+核⼼：通过构建有序序列，对于未排序序列，在已排序序列中从后向前扫描(对于单向链表则只能从前往后遍历)，找到相应位置并插⼊。实现上通常使⽤in-place排序(需⽤到O(1)的额外空间)
+
+从第⼀个元素开始，该元素可认为已排序
+取下⼀个元素，对已排序数组从后往前扫描
+若从排序数组中取出的元素⼤于新元素，则移⾄下⼀位置
+重复步骤3，直⾄找到已排序元素⼩于或等于新元素">
 
 
 
@@ -111,7 +132,7 @@
   };
 </script>
 
-  <title> One Book One Week | Luoo </title>
+  <title> Sorting | Luoo </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -241,7 +262,7 @@
             
             
               
-                One Book One Week
+                Sorting
               
             
           </h1>
@@ -253,8 +274,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2016-05-27T01:07:10+08:00" content="2016-05-27">
-              2016-05-27
+            <time itemprop="dateCreated" datetime="2016-05-29T21:43:00+08:00" content="2016-05-29">
+              2016-05-29
             </time>
           </span>
 
@@ -267,8 +288,8 @@
               <span class="post-meta-item-text">In</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Effective-Study/" itemprop="url" rel="index">
-                    <span itemprop="name">Effective Study</span>
+                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
                   </a>
                 </span>
 
@@ -300,7 +321,31 @@
       
 
       
-        <p><i class="fa fa-book" aria-hidden="true"></i>   ADVANCED CALCULUS<br><i class="fa fa-file" aria-hidden="true"></i>   <a href="http://pan.baidu.com/s/1hrQo9Ti" target="_blank" rel="external">ADVANCED CALCULUS</a></p>
+        <p>##Insertion sort</p>
+<blockquote>
+<p>核⼼：通过构建有序序列，对于未排序序列，在已排序序列中从后向前扫描(对于单向链表则只能从前往后<br>遍历)，找到相应位置并插⼊。实现上通常使⽤in-place排序(需⽤到O(1)的额外空间)</p>
+<ol>
+<li>从第⼀个元素开始，该元素可认为已排序</li>
+<li>取下⼀个元素，对已排序数组从后往前扫描</li>
+<li>若从排序数组中取出的元素⼤于新元素，则移⾄下⼀位置</li>
+<li>重复步骤3，直⾄找到已排序元素⼩于或等于新元素的位置</li>
+<li>插⼊新元素⾄该位置</li>
+<li>重复2~5</li>
+</ol>
+</blockquote>
+<p>性质：</p>
+<blockquote>
+<ul>
+<li>交换操作和数组中倒置的数量相同</li>
+<li>⽐较次数&gt;=倒置数量，&lt;=倒置的数量加上数组的⼤⼩减⼀</li>
+<li>每次交换都改变了两个顺序颠倒的元素的位置，即减少了⼀对倒置，倒置数量为0时即完成排序。</li>
+<li>每次交换对应着⼀次⽐较，且1到N-1之间的每个i都可能需要⼀次额外的记录(a[i]未到达数组左端时)</li>
+<li>最坏情况下需要~$N^2/2$次⽐较和~$N^2/2$次交换，最好情况下需要$N-1$次⽐较和0次交换。</li>
+<li>平均情况下需要~$N^2/4$次⽐较和~$N^2/4$次交换<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">In [26]: def insert_sort(lists):</span><br><span class="line">    ...:     count=len(lists)</span><br><span class="line">    ...:     for i in range(1,count):</span><br><span class="line">    ...:         print lists</span><br><span class="line">    ...:         key=lists[i]</span><br><span class="line">    ...:         j=i-1</span><br><span class="line">    ...:         while j&gt;=0:</span><br><span class="line">    ...:             if lists[j]&gt;key:</span><br><span class="line">    ...:                 lists[j+1]=lists[j]</span><br><span class="line">    ...:                 lists[j]=key</span><br><span class="line">    ...:             j-=1</span><br><span class="line">    ...:     return lists</span><br><span class="line">    ...: unlist=[6,5,3,1,4,7,9,4,3]</span><br><span class="line">    ...: print(insert_sort(unlist))</span><br><span class="line">    ...: </span><br><span class="line">[6, 5, 3, 1, 4, 7, 9, 4, 3]</span><br><span class="line">[5, 6, 3, 1, 4, 7, 9, 4, 3]</span><br><span class="line">[3, 5, 6, 1, 4, 7, 9, 4, 3]</span><br><span class="line">[1, 3, 5, 6, 4, 7, 9, 4, 3]</span><br><span class="line">[1, 3, 4, 5, 6, 7, 9, 4, 3]</span><br><span class="line">[1, 3, 4, 5, 6, 7, 9, 4, 3]</span><br><span class="line">[1, 3, 4, 5, 6, 7, 9, 4, 3]</span><br><span class="line">[1, 3, 4, 4, 5, 6, 7, 9, 3]</span><br><span class="line">[1, 3, 3, 4, 4, 5, 6, 7, 9]</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">In [25]: def insert_sort(lists):</span><br><span class="line">    ...:     for i,item_i in enumerate(lists):</span><br><span class="line">    ...:         print lists </span><br><span class="line">    ...:         index=i</span><br><span class="line">    ...:         while index &gt;0 and lists[index-1]&gt;item_i:</span><br><span class="line">    ...:             lists[index]=lists[index-1]</span><br><span class="line">    ...:             index-=1</span><br><span class="line">    ...:         lists[index]=item_i</span><br><span class="line">    ...:     return lists</span><br><span class="line">    ...: unlist=[6,5,3,1,4,7,9,4,3]</span><br><span class="line">    ...: print(insert_sort(unlist))</span><br><span class="line">    ...: </span><br><span class="line">[6, 5, 3, 1, 4, 7, 9, 4, 3]</span><br><span class="line">[6, 5, 3, 1, 4, 7, 9, 4, 3]</span><br><span class="line">[5, 6, 3, 1, 4, 7, 9, 4, 3]</span><br><span class="line">[3, 5, 6, 1, 4, 7, 9, 4, 3]</span><br><span class="line">[1, 3, 5, 6, 4, 7, 9, 4, 3]</span><br><span class="line">[1, 3, 4, 5, 6, 7, 9, 4, 3]</span><br><span class="line">[1, 3, 4, 5, 6, 7, 9, 4, 3]</span><br><span class="line">[1, 3, 4, 5, 6, 7, 9, 4, 3]</span><br><span class="line">[1, 3, 4, 4, 5, 6, 7, 9, 3]</span><br><span class="line">[1, 3, 3, 4, 4, 5, 6, 7, 9]</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -322,7 +367,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/book/" rel="tag">#book</a>
+            <a href="/tags/python/" rel="tag">#python</a>
           
         </div>
       
@@ -331,16 +376,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/05/27/Imperial ambitions 帝国雄心/" rel="next" title="Imperial ambitions 帝国雄心">
-                <i class="fa fa-chevron-left"></i> Imperial ambitions 帝国雄心
+              <a href="/2016/05/28/像未来一样发生/" rel="next" title="Lost">
+                <i class="fa fa-chevron-left"></i> Lost
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/05/27/喜欢就好/" rel="prev" title="喜欢就好，何必较真">
-                喜欢就好，何必较真 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/05/29/用列表推导来取代map和filter/" rel="prev" title="用列表推导来取代map和filter">
+                用列表推导来取代map和filter <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
