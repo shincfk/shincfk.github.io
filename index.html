@@ -305,20 +305,14 @@
 
       
         
-          
-            <p>在一系列整数上面迭代时，内置的<u>range</u>函数很有用。</p>
+          <p>在一系列整数上面迭代时，内置的<u>range</u>函数很有用。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">random_bits = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">64</span>):</span><br><span class="line">    <span class="keyword">if</span> randint(<span class="number">0</span>,<span class="number">1</span>):</span><br><span class="line">        random_bits |= <span class="number">1</span> &lt;&lt; i</span><br></pre></td></tr></table></figure>
-<p>对于字符串列表这样的序列式数据结构，可以直接在上面迭代。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">flavor_list = [<span class="string">'vanilla'</span>,<span class="string">'chocolate'</span>,<span class="string">'pecan'</span>,<span class="string">'strawberry'</span>]</span><br><span class="line"><span class="keyword">for</span> flavor <span class="keyword">in</span> flavor_list:</span><br><span class="line">    print(<span class="string">'%s is delicious'</span> % flavor)</span><br></pre></td></tr></table></figure>
-<p>当迭代列表的时候，通常还想知道当前元素在列表中的索引。例如，要按照喜好程度打印自己爱吃的冰淇淋口味。一种办法是用<u>range</u>来做。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(flavor_list)):</span><br><span class="line">    flavor = flavor_list[i]</span><br><span class="line">    print(<span class="string">'%d: %s'</span> % (i+<span class="number">1</span>,flavor))</span><br></pre></td></tr></table></figure>
-<p>与单纯迭代<u>flavor_list</u>或是单纯使用<u>range</u>的代码相比，上面这段代码有生硬。我们必须获得列表长度，并且通过下标来访问数组。不好。</p>
-<p>Python内置的<u>enumerate</u>函数，以解决此问题。<u>enumerate</u>可以把各种迭代器包装成生成器，以便稍后产生输出值。生成器每次产生一对输出值，其中，前者表示循环下标，后者表示从迭代器中获得到的下一个序列元素。这样写出代码简洁。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i, falvor <span class="keyword">in</span> enumerate(flavor_list):</span><br><span class="line">    print(<span class="string">'%d: %s'</span> %(i+<span class="number">1</span>,flavor))</span><br></pre></td></tr></table></figure>
-<p>还可以直接指定<u>enumerate</u>函数开始计数时所用的值(本例从1开始计数)，这样能写的更短。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i,flavor <span class="keyword">in</span> enumerate(flavor_list,<span class="number">1</span>):</span><br><span class="line">    print(<span class="string">'%d: %s'</span> %(i,flavor))</span><br></pre></td></tr></table></figure>
-
-          
+<p>对于字符串列表这样的序列式数据结构，可以直接在上面迭代。
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/06/14/使用enumerate取代range/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
         
       
     </div>
