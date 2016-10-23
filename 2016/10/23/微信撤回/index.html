@@ -1,0 +1,661 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="python,wechat," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="好奇心害死猫
+
+管不住自己这手啊，刷刷知乎，看到找寻微信撤回的图片这篇专栏文章，弱渣的我偷半天考研时间复现一波。
+按着作者的思路，blablabla…
+12345#配置环境* Notepad++，安装插件HEX-Editor* wechat 2.1.0.37* python 2.7.9* Windows 10 10586.589,好想最新版啊，可是一更黑屏。
+用着我的Windowsphone多年">
+<meta property="og:type" content="article">
+<meta property="og:title" content="微信撤回图片<u>复现</u>">
+<meta property="og:url" content="http://yoursite.com/2016/10/23/微信撤回/index.html">
+<meta property="og:site_name" content="Luoo">
+<meta property="og:description" content="好奇心害死猫
+
+管不住自己这手啊，刷刷知乎，看到找寻微信撤回的图片这篇专栏文章，弱渣的我偷半天考研时间复现一波。
+按着作者的思路，blablabla…
+12345#配置环境* Notepad++，安装插件HEX-Editor* wechat 2.1.0.37* python 2.7.9* Windows 10 10586.589,好想最新版啊，可是一更黑屏。
+用着我的Windowsphone多年">
+<meta property="og:image" content="http://7xru0w.com1.z0.glb.clouddn.com/2016-10-23.png">
+<meta property="og:image" content="http://7xru0w.com1.z0.glb.clouddn.com/mandelbrot.png">
+<meta property="og:updated_time" content="2016-10-23T11:53:27.503Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="微信撤回图片<u>复现</u>">
+<meta name="twitter:description" content="好奇心害死猫
+
+管不住自己这手啊，刷刷知乎，看到找寻微信撤回的图片这篇专栏文章，弱渣的我偷半天考研时间复现一波。
+按着作者的思路，blablabla…
+12345#配置环境* Notepad++，安装插件HEX-Editor* wechat 2.1.0.37* python 2.7.9* Windows 10 10586.589,好想最新版啊，可是一更黑屏。
+用着我的Windowsphone多年">
+<meta name="twitter:image" content="http://7xru0w.com1.z0.glb.clouddn.com/2016-10-23.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"hide"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: 'Author'
+    }
+  };
+</script>
+
+  <title> 微信撤回图片<u>复现</u> | Luoo </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Luoo</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                微信撤回图片<u>复现</u>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2016-10-23T19:53:27+08:00" content="2016-10-23">
+              2016-10-23
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>好奇心害死猫</p>
+</blockquote>
+<p>管不住自己这手啊，刷刷知乎，看到<a href="https://zhuanlan.zhihu.com/p/21388706" target="_blank" rel="external"><u>找寻微信撤回的图片</u></a>这篇专栏文章，弱渣的我偷半天考研时间复现一波。</p>
+<p>按着作者的思路，blablabla…</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#配置环境</span><br><span class="line">* Notepad++，安装插件HEX-Editor</span><br><span class="line">* wechat 2.1.0.37</span><br><span class="line">* python 2.7.9</span><br><span class="line">* Windows 10 10586.589,好想最新版啊，可是一更黑屏。</span><br></pre></td></tr></table></figure>
+<p>用着我的Windowsphone多年不更新的6.0.8的微信给电脑端发了照片保存后立即撤回。下一步，search</p>
+<p>这里使用Everything快速找到放置.dat文件夹，找出最新的.dat文件用Notepad++打开</p>
+<p><img src="http://7xru0w.com1.z0.glb.clouddn.com/2016-10-23.png" alt="test"></p>
+<p>我算了一下，并不是答主说的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">def encode(b):</span><br><span class="line">    return b ^ 0x51</span><br></pre></td></tr></table></figure>
+<p>en,又测试了张照片，不对，不过明显可以看到原始<code>JPG</code> Hex文件第一个字节是<code>0xFF</code>，无聊的看了下<code>PNG</code>的是<code>0x89</code>.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">magic = <span class="number">0xff</span> ^ list(buf)[<span class="number">0</span>] <span class="comment">#.dat文件</span></span><br></pre></td></tr></table></figure>
+<p>后来追进了下作者Github，答主原来发现了不对，后来重写了啊。不吹不黑，我觉得作者解密代码写得超棒。·</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_decode_pc_dat</span><span class="params">(self, datfile)</span>:</span></span><br><span class="line">        <span class="keyword">with</span> open(datfile, <span class="string">'rb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">            buf = bytearray(f.read())</span><br><span class="line"></span><br><span class="line">        magic = <span class="number">0xff</span> ^ list(buf)[<span class="number">0</span>] <span class="keyword">if</span> buf <span class="keyword">else</span> <span class="number">0x00</span></span><br><span class="line">        imgfile = re.sub(<span class="string">r'.dat$'</span>, <span class="string">'.jpg'</span>, datfile)</span><br><span class="line">        <span class="keyword">with</span> open(imgfile, <span class="string">'wb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">            newbuf = bytearray([b ^ magic <span class="keyword">for</span> b <span class="keyword">in</span> list(buf)])</span><br><span class="line">            f.write(newbuf)</span><br></pre></td></tr></table></figure>
+<p>附上链接<a href="https://github.com/zhangxiaoyang/WechatImageDecoder" target="_blank" rel="external"><u>WechatImageDecoder</u></a> ,学习了。</p>
+<p>附上我测试的图示 <a href="https://en.wikipedia.org/wiki/Mandelbrot_set" target="_blank" rel="external">Mandelbrot set</a></p>
+<p><img src="http://7xru0w.com1.z0.glb.clouddn.com/mandelbrot.png" alt="Mandelbrot set"></p>
+<blockquote>
+<p>为什么世界这么美丽，因为我眼睛看到的都是分行</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># https://zh.wikipedia.org/wiki/File:Fractal-zoom-1-15-rupture.ogg</span><br></pre></td></tr></table></figure>
+<p>上图使用<code>from PIL import Image</code></p>
+<p>下面附个matplotlib画的，感兴趣的可以跟进。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">max_iterations = <span class="number">500</span></span><br><span class="line">radius = <span class="number">50</span></span><br><span class="line">width = <span class="number">600</span></span><br><span class="line">height = <span class="number">480</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">color</span><span class="params">(z, i)</span>:</span></span><br><span class="line">    v = np.log2(i + <span class="number">1</span> - np.log2(np.log2(abs(z)))) / <span class="number">5</span></span><br><span class="line">    <span class="keyword">if</span> v &lt; <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> v**<span class="number">4</span>, v**<span class="number">2.5</span>, v</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        v = max(<span class="number">0</span>, <span class="number">2</span>-v)</span><br><span class="line">        <span class="keyword">return</span> v, v**<span class="number">1.5</span>, v**<span class="number">3</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">mandel</span><span class="params">(c)</span>:</span></span><br><span class="line">    z = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(max_iterations):</span><br><span class="line">        <span class="keyword">if</span> abs(z) &gt; radius:</span><br><span class="line">            <span class="keyword">return</span> color(z, i)</span><br><span class="line">        z = z**<span class="number">2</span> + c</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span></span><br><span class="line"></span><br><span class="line">y, x = np.ogrid[<span class="number">1.17</span>:<span class="number">-1.16</span>:height*<span class="number">1j</span>, <span class="number">-2.1</span>:<span class="number">0.8</span>:width*<span class="number">1j</span>]</span><br><span class="line">z = x + y*<span class="number">1j</span></span><br><span class="line">R, G, B = np.array(np.frompyfunc(mandel, <span class="number">1</span>, <span class="number">3</span>)(z)).astype(np.float)</span><br><span class="line">img = np.dstack((R, G, B))</span><br><span class="line">fig = plt.figure(figsize=(width/<span class="number">100.0</span>, height/<span class="number">100.0</span>), dpi=<span class="number">100</span>)</span><br><span class="line">ax = fig.add_axes([<span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>], aspect=<span class="number">1</span>)</span><br><span class="line">ax.axis(<span class="string">"off"</span>)</span><br><span class="line">ax.imshow(img)</span><br><span class="line">fig.savefig(<span class="string">"mandelbrot.png"</span>)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag">#python</a>
+          
+            <a href="/tags/wechat/" rel="tag">#wechat</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/10/21/HHVM/" rel="next" title="HHVM">
+                <i class="fa fa-chevron-left"></i> HHVM
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://7xru0w.com1.z0.glb.clouddn.com/005FPCwqgw1ejk1m24i0dj30640640sv.jpg"
+               alt="Luoo" />
+          <p class="site-author-name" itemprop="name">Luoo</p>
+          <p class="site-description motion-element" itemprop="description">Power To Go</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">categories</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.clvay.xyz" title="clvay" target="_blank">clvay</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">This post does not have a Table of Contents</p>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Luoo</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+  <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+
+  
+
+</body>
+</html>
