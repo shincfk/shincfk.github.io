@@ -99,7 +99,7 @@ $5*5$ 的方阵里，任取5个点，但任意两个点不能在同一行、同�
 
 当时就觉得是一道$n$皇后算法题，但同学说要跳出思维来做，两个字，不会。">
 <meta property="og:image" content="http://7xru0w.com1.z0.glb.clouddn.com/IMG_0291.PNG">
-<meta property="og:updated_time" content="2016-10-12T04:21:55.284Z">
+<meta property="og:updated_time" content="2016-10-23T16:39:10.427Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="N皇后问题巧解思维题">
 <meta name="twitter:description" content="好久都没写东西了，因为考研的一些原因感觉身心疲惫，在自习室趴着睡觉时，想到之前同学考我的一道思维题：
@@ -326,13 +326,10 @@ $5*5$ 的方阵里，任取5个点，但任意两个点不能在同一行、同�
 <p>用数组$matrix$记录皇后坐标，$mat[1] = 2$表示第1行的皇后放在第二列。就以线代里的行$row$ 列$column$来命名，设当前位置$(row,column)$,第$i$行$(i,mat[i])$.</p>
 </blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"></span><br><span class="line">n = <span class="number">5</span></span><br><span class="line">mat = [<span class="number">0</span>] * n  <span class="comment">#已放置的皇后的列号 </span></span><br><span class="line">count = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">DFS</span><span class="params">(row)</span>:</span></span><br><span class="line">    <span class="keyword">global</span> count</span><br><span class="line">    <span class="keyword">for</span> column <span class="keyword">in</span> range(n):</span><br><span class="line">        <span class="keyword">if</span> any(column == mat[i] <span class="keyword">or</span> column - mat[i] == row - i <span class="keyword">or</span> column - mat[i] == i - row <span class="keyword">for</span> i <span class="keyword">in</span> range(row)): </span><br><span class="line">			<span class="keyword">continue</span></span><br><span class="line">        <span class="keyword">if</span> row == n - <span class="number">1</span>: <span class="comment">#行列号从0开始</span></span><br><span class="line">            count += <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            mat[row] = column</span><br><span class="line">            DFS(row + <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">DFS(<span class="number">0</span>) </span><br><span class="line"><span class="keyword">print</span> <span class="string">"Solutions: %d"</span> % count</span><br></pre></td></tr></table></figure>
-<p>输出：</p>
-<p>···</p>
-<p>Solutions: 10</p>
-<p>···</p>
+<p>输出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Solutions: 10</span><br></pre></td></tr></table></figure></p>
 <p>Yep,给出一个放法：（明明用Tex或Python画X格更高啊，没办法，我是灵魂画家：</p>
 <p><img src="http://7xru0w.com1.z0.glb.clouddn.com/IMG_0291.PNG" alt="image"></p>
-<p>这个做法其实超级慢，但对于改5皇后问题， 0.001000 seconds</p>
+<p>这个做法其实超级慢，但对于该5皇后问题， 0.001000 seconds</p>
 <p>更好的方法有时间再写，可能12.27后。</p>
 
       
@@ -442,7 +439,7 @@ $5*5$ 的方阵里，任取5个点，但任意两个点不能在同一行、同�
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-count">21</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -450,7 +447,7 @@ $5*5$ 的方阵里，任取5个点，但任意两个点不能在同一行、同�
           
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">categories</span>
               
             </div>
@@ -459,7 +456,7 @@ $5*5$ 的方阵里，任取5个点，但任意两个点不能在同一行、同�
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
