@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="python," />
+  <meta name="keywords" content="Luoo," />
 
 
 
@@ -84,16 +84,16 @@
 
 
 
-<meta name="description" content="Python的语法非常精炼，很容易就能用一行表达式来实现逻辑。例如，要从URL中解码查询字符串。在下例所举的查询字符串中，每个参数都可以表达一个整数值：123456from urllib.parse import parse_qsmy_values= parse_qs(&apos;red=5&amp;amp;blue=0&amp;amp;green=&apos;,keep_blank_values=true)print(repr(m">
+<meta name="description" content="Hi, @luoo_alpha_bot">
 <meta property="og:type" content="article">
-<meta property="og:title" content="用辅助函数来取代复杂的表达式">
-<meta property="og:url" content="http://yoursite.com/2016/05/26/用辅助函数来取代复杂的表达式/index.html">
+<meta property="og:title" content="My first Bot">
+<meta property="og:url" content="http://yoursite.com/2017/09/29/My-first-Bot/index.html">
 <meta property="og:site_name" content="Luoo">
-<meta property="og:description" content="Python的语法非常精炼，很容易就能用一行表达式来实现逻辑。例如，要从URL中解码查询字符串。在下例所举的查询字符串中，每个参数都可以表达一个整数值：123456from urllib.parse import parse_qsmy_values= parse_qs(&apos;red=5&amp;amp;blue=0&amp;amp;green=&apos;,keep_blank_values=true)print(repr(m">
-<meta property="og:updated_time" content="2016-05-26T15:46:34.795Z">
+<meta property="og:description" content="Hi, @luoo_alpha_bot">
+<meta property="og:updated_time" content="2017-10-06T17:26:29.364Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="用辅助函数来取代复杂的表达式">
-<meta name="twitter:description" content="Python的语法非常精炼，很容易就能用一行表达式来实现逻辑。例如，要从URL中解码查询字符串。在下例所举的查询字符串中，每个参数都可以表达一个整数值：123456from urllib.parse import parse_qsmy_values= parse_qs(&apos;red=5&amp;amp;blue=0&amp;amp;green=&apos;,keep_blank_values=true)print(repr(m">
+<meta name="twitter:title" content="My first Bot">
+<meta name="twitter:description" content="Hi, @luoo_alpha_bot">
 
 
 
@@ -111,7 +111,7 @@
   };
 </script>
 
-  <title> 用辅助函数来取代复杂的表达式 | Luoo </title>
+  <title> My first Bot | Luoo </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -241,7 +241,7 @@
             
             
               
-                用辅助函数来取代复杂的表达式
+                My first Bot
               
             
           </h1>
@@ -253,8 +253,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2016-05-26T23:39:45+08:00" content="2016-05-26">
-              2016-05-26
+            <time itemprop="dateCreated" datetime="2017-09-29T00:00:00+08:00" content="2017-09-29">
+              2017-09-29
             </time>
           </span>
 
@@ -267,8 +267,8 @@
               <span class="post-meta-item-text">In</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Effective-Python/" itemprop="url" rel="index">
-                    <span itemprop="name">Effective Python</span>
+                  <a href="/categories/Telegram/" itemprop="url" rel="index">
+                    <span itemprop="name">Telegram</span>
                   </a>
                 </span>
 
@@ -300,17 +300,38 @@
       
 
       
-        <p>Python的语法非常精炼，很容易就能用一行表达式来实现逻辑。例如，要从URL中解码查询字符串。在下例所举的查询字符串中，每个参数都可以表达一个整数值：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib.parse <span class="keyword">import</span> parse_qs</span><br><span class="line">my_values= parse_qs(<span class="string">'red=5&amp;blue=0&amp;green='</span>,keep_blank_values=true)</span><br><span class="line">print(repr(my_values))</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">&#123;<span class="string">'red'</span>:[<span class="string">'5'</span>],<span class="string">'green'</span>:[<span class="string">''</span>],<span class="string">'blue'</span>:[<span class="string">'0'</span>]&#125;</span><br></pre></td></tr></table></figure></p>
-<a id="more"></a>
-<p>查询字符串中的某些参数可能有很多值，某些参数可能只有一个值，某些参数可能是blank值，还有些参数则没有出现在查询字符串之中。用get方法在my_values字典中查询不同的参数时，就有可能获得不同的返回值。<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">print('Red:     ',my_values.get('red'))</span><br><span class="line">print('Green:   ',my_values.get('green'))</span><br><span class="line">print('Opacity: ',my_values.get('opacity))</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">Red:     ['5']</span><br><span class="line">Green:   ['']</span><br><span class="line">Opacity: None</span><br></pre></td></tr></table></figure></p>
-<p>如果待查询的参数没有出现在字符串中，或当该参数的值为空白时能够返回默认值0，那就更好了。这个逻辑看上去似乎并不值得用完整的if语句或辅助函数来实现，于是，你可能会考虑用Boolean表达式。</p>
-<p>由于Python的语法非常精炼，所以我们很容易就想到了这种做法。空字符串、空列表及零值，都会评估为False。因此，在下面的例子中，如果or操作符左侧的字表达式估值为False,那么整个表达式的值就将是or操作码右侧那个子表达式的值。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># for query strinng 'red=5&amp;blue=0'&amp;green='</span></span><br><span class="line">red = my_values.get(<span class="string">'red'</span>,[<span class="string">''</span>])[<span class="number">0</span>] <span class="keyword">or</span> <span class="number">0</span></span><br><span class="line">green = my_values.get(<span class="string">'green'</span>,[<span class="string">''</span>])[<span class="number">0</span>] <span class="keyword">or</span> <span class="number">0</span></span><br><span class="line">opacity = my_values.get(<span class="string">'opacity'</span>,[<span class="string">''</span>])[<span class="number">0</span>] <span class="keyword">or</span> <span class="number">0</span></span><br><span class="line">print(<span class="string">'Red:     %r'</span> % red)</span><br><span class="line">print(<span class="string">'Green:   %r'</span> % green)</span><br><span class="line">print(<span class="string">'Opacity: %r'</span> % opacity)</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">Red:     <span class="string">'5'</span></span><br><span class="line">Green:   <span class="number">0</span></span><br><span class="line">Opacity: <span class="number">0</span></span><br></pre></td></tr></table></figure></p>
-<p>red 那一行代码是正确的，因为my_values字典里确实有’red’这个键。该键所对应的值是个列表，列表中只有一个元素，也就是字符串’5’。这个字符串会自动估值为True,所以，or表达式第一部分的值就会赋给red。<br>green那一行代码也是正确的，因为get方法从my_values字典中获取的值是个，该列表只有一个元素，这个元素是个空字符串。由于空字符串会自动估值为False,所以整个or表达式的值就为了0.<br>opacity那一行代码也没错。my_values字典里面没有名为’opacity’的键，而当字典中没有待查的键时，get方法会返回第二个参数的值，所以，在本例中，get方法就会返回仅包含一个元素的列表，那个元素是个空字符串。当字典里没有待查询的’opacity’键时，这行代码的执行效果与green那行代码相同。<br>这样的长表达式虽然语法正确，但却很难阅读，而且有时也未必完全符合要求。由于我们想在数学表达式中使用这些参数值，所以还要确保每个参数的值都是整数。为了实现这一点，我们需要把每个长表达式包含在都包裹在内置的int函数中，以便把字符串解析为整数。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">red =   int(my_values.get(&apos;red&apos;,[&apos;&apos;][0] or 0)</span><br></pre></td></tr></table></figure></p>
-<p>这种写法读起来很困难，而且看起来很乱。代码不容易理解。<br>Python 2.5添加了if/else条件表达式（又称三元操作符），使我们可以把上述逻辑写的清晰，简洁。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">red = my_values.get(&apos;red&apos;,[&apos;&apos;])</span><br><span class="line">red = int(red[0]) if red[0] else 0</span><br></pre></td></tr></table></figure></p>
-<p>再次进化：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">green = my_values.get(&apos;green&apos;,[&apos;&apos;])</span><br><span class="line">if green[0]:</span><br><span class="line">    green = int(green[0])</span><br><span class="line">else:</span><br><span class="line">    green 0</span><br></pre></td></tr></table></figure></p>
-<p>现在应该把它总结为辅助函数，如果频繁使用这种逻辑，那就更得这样做：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">def get_first_int(values,key,default=0）：</span><br><span class="line">    found = values.get(key,[&apos;&apos;])</span><br><span class="line">    if found[0]:</span><br><span class="line">        found = int(found[0])</span><br><span class="line">    else:</span><br><span class="line">        found = default</span><br><span class="line">    return found</span><br></pre></td></tr></table></figure></p>
-<p>调用这个辅助函数所使用的代码，更加清晰。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">green = get_first_int(my_values,&apos;green&apos;)</span><br></pre></td></tr></table></figure></p>
-<p>表达式如果变得比较复杂，应该考虑将其拆解为小块，并把这些逻辑移入辅助函数中。</p>
+        <blockquote>
+<p>Hi, @luoo_alpha_bot<br><a id="more"></a></p>
+</blockquote>
+<p>近一个星期来，有时间就搞了搞开源项目，简单的搭了个模型，想到Telegram是一个开源的IM工具，并且Github上有开源的Python API，可以快速的完成功能。这里主要记录一下Telegram bot的搭建。</p>
+<p>对于telegram的bot,开发者可以使用官方的API完成自己的bot应用，<u><a href="https://core.telegram.org/api" target="_blank" rel="external">Telegram Bot Platform</a></u> 。Github上开发者对原生API进行封装，我这里使用的是<u><a href="https://github.com/python-telegram-bot/python-telegram-bot" target="_blank" rel="external">python-telegram-bot</a></u></p>
+<blockquote>
+<p>Installing</p>
+</blockquote>
+<p>推荐从source安装：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git clone https://github.com/python-telegram-bot/python-telegram-bot --recursive</span><br><span class="line">$ cd python-telegram-bot</span><br><span class="line">$ python setup.py install</span><br></pre></td></tr></table></figure>
+<p>当然也可以通过<code>pip</code>安装与更新：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pip install python-telegram-bot --upgrade</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Getting started</p>
+</blockquote>
+<p>首先需要创建自己的bot,这一步很简单，在会话中搜索<a href="https://telegram.me/BotFather" target="_blank" rel="external">@BotFather</a>,键入<code>/start</code>后，按照指示，创建自己的bot,用来接入HTTP API的Token是你Bot的唯一标识。</p>
+<p>我将自己测试的Bot应用部署在我的Azure上，当然可以部署的平台很多，比如树莓派上也是可以的，Telegram Bots可以部署的地方文档有提到<a href="https://github.com/python-telegram-bot/python-telegram-bot/wiki/Where-to-host-Telegram-Bots#vps" target="_blank" rel="external">Where to host Telegram Bots</a> , 使用<code>Vim</code>直接在服务器上开发很方便。</p>
+<p>这里我建议使用<code>Ipython</code>去输入调试文档中的代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">1</span>]: <span class="keyword">import</span> telegram</span><br><span class="line"></span><br><span class="line">In [<span class="number">2</span>]: bot = telegram.Bot(token=<span class="string">'Your Token'</span>)</span><br><span class="line"></span><br><span class="line">In [<span class="number">3</span>]: print(bot.get_me())</span><br><span class="line">&#123;<span class="string">'username'</span>: <span class="string">u'luoo_alpha_bot'</span>, <span class="string">'first_name'</span>: <span class="string">u'Alpha'</span>, <span class="string">'last_name'</span>: <span class="string">''</span>, <span class="string">'type'</span>: <span class="string">''</span>, <span class="string">'id'</span>: xxxxxxxxx&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Hosting your bot</p>
+</blockquote>
+<p>在linux中，可以使用<code>screen</code>命令，只要Screen本身没有终止，在其内部运行的会话都可以恢复。这一点对于远程登录的用户特别有用——即使网络连接中断，用户也不会失去对已经打开的命令行会话的控制。只要再次登录到主机上执行screen -r就可以恢复会话的运行。同样在暂时离开的时候，也可以执行分离命令detach，在保证里面的程序正常运行的情况下让Screen挂起（切换到后台）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ screen -S telegram_bot</span><br></pre></td></tr></table></figure>
+<p>如果有安装不同版本库的需求，建议使用Python的虚拟环境<code>venv</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ pyvenv telegram #创建虚拟环境</span><br><span class="line">$ source telegram/bin/activate #进入虚拟环境</span><br><span class="line">$ deactivate #退出虚拟环境</span><br></pre></td></tr></table></figure>
+<p>下面是可运行的Bot Test,在当前screen中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vim luoo_alpha_bot.py</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env/python</span></span><br><span class="line"><span class="comment"># encoding: utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> logging</span><br><span class="line"><span class="keyword">from</span> telegram.ext <span class="keyword">import</span> CommandHandler</span><br><span class="line"><span class="keyword">from</span> telegram.ext <span class="keyword">import</span> Updater</span><br><span class="line"></span><br><span class="line">updater = Updater(token = <span class="string">'YOUR TOKEN'</span>)</span><br><span class="line">dispatcher = updater.dispatcher</span><br><span class="line">logging.basicConfig(format = <span class="string">'%(asctime)s - %(name)s - %(levelname)s - %(message)s'</span>,level = logging.INFO)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">start</span><span class="params">(bot,update)</span>:</span></span><br><span class="line">        bot.send_message(chat_id = update.message.chat_id,text = <span class="string">"[incoming communication]Can anyone read me?"</span>)</span><br><span class="line"></span><br><span class="line">start_handler = CommandHandler(<span class="string">'start'</span>,start)</span><br><span class="line">dispatcher.add_handler(start_handler)</span><br><span class="line"></span><br><span class="line">updater.start_polling()</span><br><span class="line">updater.idle()</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ python luoo_alpha_bot.py #这里替换</span><br></pre></td></tr></table></figure>
+<p>到此，在你的<a href="https://telegram.org/apps" target="_blank" rel="external">Telegram Applications</a>里和你的Bot互动吧，当然Telegram Bot的功能很多，具体需要哪些功能参看API文档。</p>
+<p><i class="fa fa-hand-spock-o" aria-hidden="true"></i><i class="fa fa-hand-spock-o" aria-hidden="true"></i><i class="fa fa-hand-spock-o" aria-hidden="true"></i></p>
 
       
     </div>
@@ -332,7 +353,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/python/" rel="tag">#python</a>
+            <a href="/tags/Luoo/" rel="tag">#Luoo</a>
           
         </div>
       
@@ -341,17 +362,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/05/23/Effective Study/" rel="next" title="非线性光学复习 Season 2">
-                <i class="fa fa-chevron-left"></i> 非线性光学复习 Season 2
+              <a href="/2017/06/29/致谢/" rel="next" title="致谢">
+                <i class="fa fa-chevron-left"></i> 致谢
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/05/27/Imperial ambitions 帝国雄心/" rel="prev" title="Imperial ambitions 帝国雄心">
-                Imperial ambitions 帝国雄心 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
