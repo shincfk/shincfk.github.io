@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="2017," />
+  <meta name="keywords" content="Linux," />
 
 
 
@@ -84,18 +84,16 @@
 
 
 
-<meta name="description" content="撒花，撒花">
+<meta name="description" content="Kill一个detached状态的screen会话：">
 <meta property="og:type" content="article">
-<meta property="og:title" content="撒花，撒花">
-<meta property="og:url" content="http://yoursite.com/2017/01/08/撒花，撒花/index.html">
+<meta property="og:title" content="Kill detached screen session">
+<meta property="og:url" content="http://yoursite.com/2017/08/29/Kill detached screen session/index.html">
 <meta property="og:site_name" content="Luoo">
-<meta property="og:description" content="撒花，撒花">
-<meta property="og:image" content="http://7xru0w.com1.z0.glb.clouddn.com/Fate%20Wallpapers%20%2827%29.jpg">
-<meta property="og:updated_time" content="2017-01-08T06:47:32.839Z">
+<meta property="og:description" content="Kill一个detached状态的screen会话：">
+<meta property="og:updated_time" content="2017-10-08T04:51:55.632Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="撒花，撒花">
-<meta name="twitter:description" content="撒花，撒花">
-<meta name="twitter:image" content="http://7xru0w.com1.z0.glb.clouddn.com/Fate%20Wallpapers%20%2827%29.jpg">
+<meta name="twitter:title" content="Kill detached screen session">
+<meta name="twitter:description" content="Kill一个detached状态的screen会话：">
 
 
 
@@ -113,7 +111,7 @@
   };
 </script>
 
-  <title> 撒花，撒花 | Luoo </title>
+  <title> Kill detached screen session | Luoo </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -243,7 +241,7 @@
             
             
               
-                撒花，撒花
+                Kill detached screen session
               
             
           </h1>
@@ -255,8 +253,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2017-01-08T14:47:32+08:00" content="2017-01-08">
-              2017-01-08
+            <time itemprop="dateCreated" datetime="2017-08-29T00:00:00+08:00" content="2017-08-29">
+              2017-08-29
             </time>
           </span>
 
@@ -269,8 +267,8 @@
               <span class="post-meta-item-text">In</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/札记/" itemprop="url" rel="index">
-                    <span itemprop="name">札记</span>
+                  <a href="/categories/Screen/" itemprop="url" rel="index">
+                    <span itemprop="name">Screen</span>
                   </a>
                 </span>
 
@@ -302,9 +300,14 @@
       
 
       
-        <p><img src="http://7xru0w.com1.z0.glb.clouddn.com/Fate%20Wallpapers%20%2827%29.jpg" alt="fate"></p>
-<p><strong>撒花，撒花</strong><br><a id="more"></a><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">begin</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">'Hello 2017!'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    app.run()</span><br></pre></td></tr></table></figure></p>
-<p>2017,第一个小目标已达成，愿自己一路狂歌，不枉少年白头。</p>
+        <blockquote>
+<p>Kill一个detached状态的screen会话：<br><a id="more"></a></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ screen -X -S [session # you want to kill] quit</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Notes<br><code>kill</code> only kill one screen window, if you want to kill the complete session, use <code>quit</code>.</p>
+</blockquote>
+<p>If you want clean all <u>dead</u> screen sessions:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ screen -wipe #检查目前所有screen作业，并删除已经无法使用的screen作业</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -326,7 +329,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/2017/" rel="tag">#2017</a>
+            <a href="/tags/Linux/" rel="tag">#Linux</a>
           
         </div>
       
@@ -335,16 +338,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/10/24/知其所以然（以算法学习为例）/" rel="next" title="知其所以然（以算法学习为例）">
-                <i class="fa fa-chevron-left"></i> 知其所以然（以算法学习为例）
+              <a href="/2017/06/29/致谢/" rel="next" title="致谢">
+                <i class="fa fa-chevron-left"></i> 致谢
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/02/28/Chrome插件/" rel="prev" title="日常使用的Chrome插件">
-                日常使用的Chrome插件 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/09/29/My-first-Bot/" rel="prev" title="My first Bot">
+                My first Bot <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
