@@ -90,10 +90,12 @@
 <meta property="og:url" content="http://yoursite.com/2017/09/29/My-first-Bot/index.html">
 <meta property="og:site_name" content="Luoo">
 <meta property="og:description" content="Hi, @luoo_alpha_bot">
-<meta property="og:updated_time" content="2017-10-08T06:34:35.891Z">
+<meta property="og:image" content="http://yoursite.com/C:\Users\lenovo\Desktop\微信图片_20171118112736.jpg">
+<meta property="og:updated_time" content="2017-11-18T03:36:00.769Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="My first Bot">
 <meta name="twitter:description" content="Hi, @luoo_alpha_bot">
+<meta name="twitter:image" content="http://yoursite.com/C:\Users\lenovo\Desktop\微信图片_20171118112736.jpg">
 
 
 
@@ -305,6 +307,10 @@
 </blockquote>
 <a id="more"></a>
 <p>近一个星期来，有时间就搞了搞开源项目，简单的搭了个模型，想到Telegram是一个开源的IM工具，并且Github上有开源的Python API，可以快速的完成功能。这里主要记录一下Telegram bot的搭建。</p>
+<p>先谈谈Telegram，Telegram是类似于微信的一款跨平台的IM工具，其特点在于开源，注重用户隐私，其中加密通信是Telegram的主打功能，可以使用MTProto加密协议，发起一对一的加密聊天。我比较喜欢的基本功能有群组，channel等。</p>
+<p><img src="C:\Users\lenovo\Desktop\微信图片_20171118112736.jpg" alt="微信图片_20171118112736"></p>
+<p>这里要介绍的Telegram Bot是Telegram发布的机器人平台，我们开发者可以使用官方的API，或者开源的其他语言的API，例如：Python和Go，目前在Github上都是热门的项目，Telegram Bot的开发，会完成更多交互，我们可以接入图灵机器人，微软小冰这样的智能聊天API，完成聊天交互；可以通过Bot完成RSS订阅，可以查看天气，下载歌曲等等，而这些功能都是可以部署在我们自己的VPS上。</p>
+<p>之前基于Telegram Bot平台，在自己的微软Azure服务器上，完成了一个Bot，通过用户交互自己的当前面部图片，在后端调用微软的情绪识别API，完成用户表情的识别，同时对用户做出交互，如果可以接入微软小冰这样的服务，完全可以实现服务内容的精准化推荐。那么下面开始迈出第一步。</p>
 <p>对于telegram的bot,开发者可以使用官方的API完成自己的bot应用，<u><a href="https://core.telegram.org/api" target="_blank" rel="external">Telegram Bot Platform</a></u> 。Github上开发者对原生API进行封装，我这里使用的是<u><a href="https://github.com/python-telegram-bot/python-telegram-bot" target="_blank" rel="external">python-telegram-bot</a></u></p>
 <blockquote>
 <p>Installing</p>
@@ -332,7 +338,6 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env/python</span></span><br><span class="line"><span class="comment"># encoding: utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> logging</span><br><span class="line"><span class="keyword">from</span> telegram.ext <span class="keyword">import</span> CommandHandler</span><br><span class="line"><span class="keyword">from</span> telegram.ext <span class="keyword">import</span> Updater</span><br><span class="line"></span><br><span class="line">updater = Updater(token = <span class="string">'YOUR TOKEN'</span>)</span><br><span class="line">dispatcher = updater.dispatcher</span><br><span class="line">logging.basicConfig(format = <span class="string">'%(asctime)s - %(name)s - %(levelname)s - %(message)s'</span>,level = logging.INFO)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">start</span><span class="params">(bot,update)</span>:</span></span><br><span class="line">        bot.send_message(chat_id = update.message.chat_id,text = <span class="string">"[incoming communication]Can anyone read me?"</span>)</span><br><span class="line"></span><br><span class="line">start_handler = CommandHandler(<span class="string">'start'</span>,start)</span><br><span class="line">dispatcher.add_handler(start_handler)</span><br><span class="line"></span><br><span class="line">updater.start_polling()</span><br><span class="line">updater.idle()</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ python luoo_alpha_bot.py #这里替换</span><br></pre></td></tr></table></figure>
 <p>到此，在你的<a href="https://telegram.org/apps" target="_blank" rel="external">Telegram Applications</a>里和你的Bot互动吧，当然Telegram Bot的功能很多，具体需要哪些功能参看API文档。</p>
-<p><i class="fa fa-hand-spock-o" aria-hidden="true"></i><i class="fa fa-hand-spock-o" aria-hidden="true"></i><i class="fa fa-hand-spock-o" aria-hidden="true"></i></p>
 
       
     </div>
@@ -441,7 +446,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">28</span>
+              <span class="site-state-item-count">29</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -449,7 +454,7 @@
           
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">categories</span>
               
             </div>
@@ -458,7 +463,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
