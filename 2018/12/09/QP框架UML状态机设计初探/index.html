@@ -1,0 +1,676 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="QPC,UML," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="之前接手的项目里接触到了QP架构，可惜项目架构并没有去使用，在接触到这个代码后，个人很是兴趣，自己便在做了一下探究，这个文档是当初分享给项目组的小伙伴去理解，后面也会去更新我的理解。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="UML状态图设计浅析（一）">
+<meta property="og:url" content="http://yoursite.com/2018/12/09/QP框架UML状态机设计初探/index.html">
+<meta property="og:site_name" content="Luoo">
+<meta property="og:description" content="之前接手的项目里接触到了QP架构，可惜项目架构并没有去使用，在接触到这个代码后，个人很是兴趣，自己便在做了一下探究，这个文档是当初分享给项目组的小伙伴去理解，后面也会去更新我的理解。">
+<meta property="og:updated_time" content="2018-12-09T14:02:27.699Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="UML状态图设计浅析（一）">
+<meta name="twitter:description" content="之前接手的项目里接触到了QP架构，可惜项目架构并没有去使用，在接触到这个代码后，个人很是兴趣，自己便在做了一下探究，这个文档是当初分享给项目组的小伙伴去理解，后面也会去更新我的理解。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"hide"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: 'Author'
+    }
+  };
+</script>
+
+  <title> UML状态图设计浅析（一） | Luoo </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Luoo</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                UML状态图设计浅析（一）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2018-12-09T21:33:00+08:00" content="2018-12-09">
+              2018-12-09
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/QP/" itemprop="url" rel="index">
+                    <span itemprop="name">QP</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>之前接手的项目里接触到了QP架构，可惜项目架构并没有去使用，在接触到这个代码后，个人很是兴趣，自己便在做了一下探究，这个文档是当初分享给项目组的小伙伴去理解，后面也会去更新我的理解。 </p>
+</blockquote>
+<a id="more"></a>
+<h3 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h3><ul>
+<li>[x] FSM（有限状态机）</li>
+<li>[x] HSM（层次状态机）</li>
+</ul>
+<h3 id="HSM实现方式"><a href="#HSM实现方式" class="headerlink" title="HSM实现方式"></a>HSM实现方式</h3><p>QHSM是一套HSM的实现框架，包括qhsm.h和qhsm.c文件等其他辅助文件。实现方式使用函数指针代替状态，这里简单描述一下QHSM的框架和HSM的执行情况，我们就以项目QP架构里的UserApp AO来说：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">/* hierarchical state machine ... */</span><br><span class="line">QState UserApp_initial(UserApp * const me, QEvt const * const e);</span><br><span class="line">QState UserApp_home(UserApp * const me, QEvt const * const e);</span><br><span class="line">QState UserApp_active(UserApp * const me, QEvt const * const e);</span><br><span class="line">QState UserApp_standby(UserApp * const me, QEvt const * const e);</span><br><span class="line">QState UserApp_Upgrade(UserApp * const me, QEvt const * const e);</span><br><span class="line">QState UserApp_IR_Learning(UserApp * const me, QEvt const * const e); </span><br><span class="line">QState UserApp_active_AudioPlayer(UserApp * const me, QEvt const * const e);</span><br><span class="line">QState UserApp_active_Bt(UserApp * const me, QEvt const * const e); </span><br><span class="line">QState UserApp_active_I2S_in(UserApp * const me, QEvt const * const e);</span><br><span class="line">QState UserApp_active_AUX_in(UserApp * const me, QEvt const * const e);</span><br></pre></td></tr></table></figure>
+<p>这是useapp HSM的一些状态，当收到一个消息，QF框架会直接调用，具体体现可以看到：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">QState UserApp_active(UserApp * const me, QEvt const * const e) &#123;</span><br><span class="line">    QState status = 0;</span><br><span class="line">	char strBuf[14];    </span><br><span class="line">	QEvt *msg = NULL;	//luoo666 add sw</span><br><span class="line">	</span><br><span class="line">    switch (e-&gt;sig) &#123;</span><br><span class="line">        case Q_ENTRY_SIG: &#123;</span><br><span class="line">            ap_BurnTest_log(&quot;ENTRY\n&quot;);</span><br><span class="line">            ...</span><br><span class="line">            ...</span><br><span class="line">case POWER_RELEASE_SIG: &#123;</span><br><span class="line">            ap_printf(&quot;[%s] -&gt; standby; \n&quot;,__FUNCTION__);</span><br><span class="line">            status = Q_TRAN(&amp;UserApp_standby);	//需要进入该状态处理处理</span><br><span class="line">            break;</span><br><span class="line">        &#125;</span><br><span class="line">        ...</span><br><span class="line">        ...</span><br><span class="line">default: &#123;</span><br><span class="line">            status = Q_SUPER(&amp;UserApp_home);	//不处理的事件返回父状态</span><br><span class="line">            break;</span><br></pre></td></tr></table></figure>
+<p>在收到不同的消息后，会进入到父状态或子状态或其他目标状态去；这里也体现出状态的层次关系，即某个状态的处理函数中，如果这个消息需要这个状态处理，就进入该状态去处理，如果不需要处理的事件，就直接返回父状态；</p>
+<blockquote>
+<p>补充说明下QF中的系统消息，这个在每个状态进入时都会得到体现；列出来便于理解</p>
+<ul>
+<li><p>Q_EMPTY_SIG = 0, //空消息，用于检测状态之间的父子关系的，外部不能响应这个消息</p>
+</li>
+<li><p>Q_INIT_SIG = 1,//定义initial transition的消息，转换到该状态时调用</p>
+</li>
+<li><p>Q_ENTRY_SIG = 2, //Entry消息，进入该状态时调用</p>
+</li>
+<li><p>Q_EXIT_SIG = 3  //Exit 消息，退出该状态时调用</p>
+<blockquote>
+<p>Transition：当调用 Q_TRAN进行状态迁移的时候，QF 会计算</p>
+</blockquote>
+<p>源状态和目标状态的公共父状态，会给源状态到公共父状态之间所有状<br>态发送一个 Q_EXIT_SIG 消息，然后给公共父状态到目标状态之间的所<br>有状态发一个 Q_ENTRY_SIG。</p>
+</li>
+</ul>
+</blockquote>
+<p>下面通过添加的QP Player来了解其设计思路</p>
+<h3 id="QP-player-example"><a href="#QP-player-example" class="headerlink" title="QP player example"></a>QP player example</h3><p>具体在开发的时候，会把应用抽象为UML状态机；设计里会涉及到下面几点：</p>
+<ul>
+<li>创建一个播放的应用，会有play、stop、pause三个状态；</li>
+<li>player在播放前会去扫描文件，于是会再创建一个mediaScnner的应用，它有空闲和扫描两个状态，将它们分别定义为idle和busy</li>
+<li>ü这些状态可能因为某种因素会转换到另一种状态，比如player在stop的状态，会因为用户按下了播放键而转换到play状态，那么还需要我们定义好引起这种转换的条件signal，最终以事件的方式来交互。</li>
+</ul>
+<p>从这三点出发，可以画出下面的UML状态图</p>
+<!--![UML](C:\Users\8001188\Desktop\UML.png)-->
+<p>这个AO只有有限的状态切换，可以看作是FSM</p>
+<blockquote>
+<p>有限状态机系统,，这些状态是有限的、不重叠的。这样的系统在某一时刻一定会处于其所有状态中的一个状态，此时它 接收一部分允许的输入，产生一部分可能的响应，并且迁移到一部分可能的状态。</p>
+</blockquote>
+<p>通俗理解就是当一个事件被状态机系统分发的时候，状态机会对该action响应，Transition到另一个状态中，这里涉及到dispatch事件，深入了解请参看qpc源码，对照可参看（UML状态图的实用CC++设计.pdf）</p>
+<p>我们在往下走一步，思考这么一个问题，在play和pause的两个状态中，是不存在着一些相同的操作，那这个时候，我们还可以在分一个层，把他们相同的及不处理的事件操作抽象出来，在化为一个Player_active的操作，作为play及pause的超状态，这点在useapp AO中体现的很明显，举个例子，我们在这个状态中，可以把不想处理的事件直接Q_SUPER到父状态去处理。通俗理解就是，==继承==，play和pause继承了active的全部事件，这就是8107 code中把FSM状态机化为HSM状态机的思路。</p>
+<h3 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h3><p>以上是对项目用到QP设计的一个理解，后续会做一个深入的探究</p>
+<h3 id="说明补充"><a href="#说明补充" class="headerlink" title="说明补充"></a>说明补充</h3><p>QP: Quantum Programming</p>
+<p>QP是一个通用的事件驱动框架，面向MCU，面向并发的层次式状态机模型。</p>
+<p>QP包含了1个轻量级的QK（Quantum Kernel）。</p>
+<p>QEP：Quantum Event Processor是一个通用的，可移植的，可重用的状态机引擎。</p>
+<p>QEP允许你直接把UML样式的状态图映射为代码。</p>
+<p>QEP提供了传统的简单平面状态机和层次式状态机。QEP可以直接操作事件队列和事件分发机制。</p>
+<p>QF是一个通用的，事件驱动的应用框架，面向嵌入式系统。</p>
+<p>QF被设计成和QEP，RTOS协同工作。</p>
+<p>QF包含了事件队列，活动对象，事件遍历等。</p>
+<p>QK是一个极小的，按RTC习惯的，执行独立任务的内核。</p>
+<p>QK必须和QF版本相匹配。</p>
+<p>QS是一个的实时跟踪设施。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/QPC/" rel="tag">#QPC</a>
+          
+            <a href="/tags/UML/" rel="tag">#UML</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/10/野蛮生长/" rel="next" title="野蠻生長">
+                <i class="fa fa-chevron-left"></i> 野蠻生長
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://7xru0w.com1.z0.glb.clouddn.com/005FPCwqgw1ejk1m24i0dj30640640sv.jpg"
+               alt="Luoo" />
+          <p class="site-author-name" itemprop="name">Luoo</p>
+          <p class="site-description motion-element" itemprop="description">Power To Go</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">32</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">categories</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.clvay.xyz" title="clvay" target="_blank">clvay</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#开始"><span class="nav-number">1.</span> <span class="nav-text">开始</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HSM实现方式"><span class="nav-number">2.</span> <span class="nav-text">HSM实现方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#QP-player-example"><span class="nav-number">3.</span> <span class="nav-text">QP player example</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结束"><span class="nav-number">4.</span> <span class="nav-text">结束</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#说明补充"><span class="nav-number">5.</span> <span class="nav-text">说明补充</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Luoo</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+  <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+
+  
+
+</body>
+</html>
